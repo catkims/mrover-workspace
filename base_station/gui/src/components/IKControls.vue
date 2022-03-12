@@ -50,6 +50,18 @@
                     Weight In
                 </button>
             </div>
+            <div class="input">
+                 Preset name: <input type='message' v-model ='name'>
+                 Button number: <input type='message' v-model ='buttonInc'>
+                <button v-on:click="addPreset()">Add preset</button>
+            </div>
+            <div class="add-presets">
+                <button class="preset-button" v-on:click="userInput1()">{{ button1 }}</button>
+                <button class="preset-button" v-on:click="userInput2()">{{ button2 }}</button>
+                <button class="preset-button" v-on:click="userInput3()">{{ button3 }}</button>
+                <button class="preset-button" v-on:click="userInput4()">{{ button4 }}</button>
+                <button class="preset-button" v-on:click="userInput5()">{{ button5 }}</button>
+            </div>
         </div>
     </div>
 </template>
@@ -79,7 +91,15 @@ export default {
                 'joint_d': false,
                 'joint_e': false,
                 'joint_f': false
-            }
+            },
+
+            name: "",
+            buttonInc: 1,
+            button1:"default",
+            button2:"default",
+            button3:"default",
+            button4:"default",
+            button5:"default"
         }
     },
 
@@ -154,7 +174,42 @@ export default {
 
         presetPositionCallback: function(position) {
             this.$parent.publish('/arm_preset', { 'type': 'ArmPreset', 'preset': position });
-        }
+        },
+
+        addPreset: function() {
+            if (this.buttonInc == 1) {
+                this.button1 = this.name;
+            }
+            else if (this.buttonInc == 2) {
+                this.button2 = this.name;
+            }
+            else if (this.buttonInc == 3) {
+                this.button3 = this.name;
+            }
+            else if (this.buttonInc == 4) {
+                this.button4 = this.name;
+            }
+            else if (this.buttonInc == 5) {
+                this.button5 = this.name;
+            }
+        },
+
+        userInput1: function() {
+            this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button1 });
+        },
+        userInput2: function() {
+            this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button2 });
+        },
+        userInput3: function() {
+            this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button3 });
+        },
+        userInput4: function() {
+            this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button4 });
+        },
+        userInput5: function() {
+            this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button5 });
+        },
+
     },
 
     components: {
@@ -204,5 +259,16 @@ export default {
     margin: 0px 10px;
 }
 
+.input {
+    display: flex;
+    padding-top: 5%;
+    justify-content: space-between;
+}
+
+.add-presets {
+    display: flex;
+    padding-top: 2%;
+    justify-content: left;
+}
 
 </style>

@@ -617,6 +617,10 @@ void StandardArm::arm_preset_callback(std::string channel, ArmPreset msg) {
     go_to_target_angles(new_msg);
 }
 
+void StandardArm::custom_preset_callback(std::string channel, CustomPreset msg) {
+    arm_state.set_preset_position(msg.preset);
+}
+
 void StandardArm::encoder_angles_sender() {
     // Continuously send mock values if in sim mode
     while (true) {
@@ -737,6 +741,10 @@ void ScienceArm::arm_preset_callback(std::string channel, ArmPreset msg) {
     new_msg.joint_e = angles[3];
 
     go_to_target_angles(new_msg);
+}
+
+void ScienceArm::custom_preset_callback(std::string channel, CustomPreset msg) {
+    arm_state.set_preset_position(msg.preset);
 }
 
 void ScienceArm::encoder_angles_sender() {
