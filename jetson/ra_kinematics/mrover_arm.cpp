@@ -619,6 +619,7 @@ void StandardArm::arm_preset_callback(std::string channel, ArmPreset msg) {
 
 void StandardArm::custom_preset_callback(std::string channel, CustomPreset msg) {
     arm_state.set_preset_position(msg.preset);
+    std::cout << "adding new preset " << msg.preset << "\n";
 }
 
 void StandardArm::encoder_angles_sender() {
