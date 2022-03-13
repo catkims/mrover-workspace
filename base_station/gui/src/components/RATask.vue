@@ -30,7 +30,7 @@
       <Cameras v-bind:servosData="lastServosMessage" v-bind:connections="connections.cameras"/>
     </div>
     <div class="box map light-bg">
-      <RoverMap v-bind:odom="odom"/>
+      <RoverMapAuton v-bind:odom="odom"/>
     </div>
     <div class="box drives light-bg">
       <DriveVelDataH/>
@@ -46,7 +46,7 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import Cameras from './Cameras.vue'
-import RoverMap from './RoverMap.vue'
+import RoverMapAuton from './RoverMapAuton.vue'
 import CommIndicator from './CommIndicator.vue'
 import OdometryReading from './OdometryReading.vue'
 import ArmControls from './ArmControls.vue'
@@ -194,7 +194,7 @@ export default {
   },
 
   components: {
-    RoverMap,
+    RoverMapAuton,
     Cameras,
     CommIndicator,
     ArmControls,
