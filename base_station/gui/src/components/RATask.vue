@@ -245,7 +245,7 @@ export default {
   .wrapper {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     grid-template-rows: 60px 3fr 1fr 2fr 70px 60px;
     grid-template-areas: "header header" "map cameras" "map drives" "map drives" "controls drives" "odom drives";
     font-family: sans-serif;

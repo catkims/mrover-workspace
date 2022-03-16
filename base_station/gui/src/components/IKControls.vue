@@ -52,7 +52,7 @@
             </div>
             <div class="input">
                  Preset name: <input type='message' v-model ='name'>
-                 Button number: <input type='message' v-model ='buttonInc'>
+                 Button number: <input type='message' v-model ='buttonIdx'>
                 <button v-on:click="addPreset()">Add preset</button>
             </div>
             <div class="add-presets">
@@ -94,7 +94,7 @@ export default {
             },
 
             name: "",
-            buttonInc: 1,
+            buttonIdx: 1,
             button1:"default",
             button2:"default",
             button3:"default",
@@ -177,26 +177,22 @@ export default {
         },
 
         addPreset: function() {
-            if (this.buttonInc == 1) {
+            if (this.buttonIdx == 1) {
                 this.button1 = this.name;
-                this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button1 });
             }
-            else if (this.buttonInc == 2) {
+            else if (this.buttonIdx == 2) {
                 this.button2 = this.name;
-                this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button2 });
             }
-            else if (this.buttonInc == 3) {
+            else if (this.buttonIdx == 3) {
                 this.button3 = this.name;
-                this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button3 })
             }
-            else if (this.buttonInc == 4) {
+            else if (this.buttonIdx == 4) {
                 this.button4 = this.name;
-                this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button4 });
             }
-            else if (this.buttonInc == 5) {
+            else if (this.buttonIdx == 5) {
                 this.button5 = this.name;
-                this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.button5 });
             }
+            this.$parent.publish('/custom_preset', { 'type': 'CustomPreset', 'preset': this.name });
         }
     },
 

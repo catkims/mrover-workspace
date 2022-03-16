@@ -588,6 +588,11 @@ void MRoverArm::check_joint_limits(std::vector<double> &angles) {
     }
 }
 
+void MRoverArm::custom_preset_callback(std::string channel, CustomPreset msg) {
+    arm_state.set_preset_position(msg.preset);
+    std::cout << "adding new preset " << msg.preset << "\n";
+}
+
 StandardArm::StandardArm(json &geom, lcm::LCM &lcm) : MRoverArm(geom, lcm) { }
 
 void StandardArm::lock_joints_callback(std::string channel, LockJoints msg) {
@@ -615,11 +620,6 @@ void StandardArm::arm_preset_callback(std::string channel, ArmPreset msg) {
     new_msg.joint_f = angles[5];
 
     go_to_target_angles(new_msg);
-}
-
-void StandardArm::custom_preset_callback(std::string channel, CustomPreset msg) {
-    arm_state.set_preset_position(msg.preset);
-    std::cout << "adding new preset " << msg.preset << "\n";
 }
 
 void StandardArm::encoder_angles_sender() {
@@ -742,10 +742,6 @@ void ScienceArm::arm_preset_callback(std::string channel, ArmPreset msg) {
     new_msg.joint_e = angles[3];
 
     go_to_target_angles(new_msg);
-}
-
-void ScienceArm::custom_preset_callback(std::string channel, CustomPreset msg) {
-    arm_state.set_preset_position(msg.preset);
 }
 
 void ScienceArm::encoder_angles_sender() {
