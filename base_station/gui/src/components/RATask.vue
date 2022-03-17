@@ -42,7 +42,7 @@
     <div class="box light-bg">
       <DriveControls/>
     </div>
-    
+    <iframe src="http://localhost:8020/#/" width="100%" height="400" style="border:none;" title="IK gui"></iframe>
     <div class="spacer"></div>
   </div>
 </template>
@@ -165,9 +165,6 @@ export default {
             console.log(msg['message']['message'])
           }
         }
-        // } else if (msg.topic === '/ik_reset') {
-        //   console.log('is this working?')
-        // }
       },
       // Subscriptions
       [
@@ -247,7 +244,12 @@ export default {
     grid-gap: 10px;
     grid-template-columns: 1fr 1.5fr;
     grid-template-rows: 60px 3fr 1fr 2fr 70px 60px;
-    grid-template-areas: "header header" "map cameras" "map drives" "map drives" "controls drives" "odom drives";
+    grid-template-areas: "header header"
+                         "map cameras"
+                         "map drives"
+                         "map drives"
+                         "controls drives"
+                         "odom drives";
     font-family: sans-serif;
     height: 98vh;
   }
