@@ -33,7 +33,7 @@
       <IKControls/>
     </div>
     <div class="box map light-bg">
-      <RoverMapAuton v-bind:odom="odom"/>
+      <RoverMap v-bind:odom="odom"/>
     </div>
     <div class="box controls light-bg">
       <ArmControls/>
@@ -51,7 +51,7 @@
 import { mapGetters, mapMutations } from 'vuex'
 import Cameras from './Cameras.vue'
 import IKControls from './IKControls.vue'
-import RoverMapAuton from './RoverMapAuton.vue'
+import RoverMap from './RoverMap.vue'
 import CommIndicator from './CommIndicator.vue'
 import OdometryReading from './OdometryReading.vue'
 import ArmControls from './ArmControls.vue'
@@ -228,7 +228,7 @@ export default {
   },
 
   components: {
-    RoverMapAuton,
+    RoverMap,
     Cameras,
     CommIndicator,
     ArmControls,
