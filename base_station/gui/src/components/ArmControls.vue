@@ -1,10 +1,14 @@
 <template>
   <div class="wrap">
-      <Checkbox ref="open-loop" v-bind:name="'Open Loop'" v-on:toggle="updateControlMode('open-loop', $event)"/>
-      <Checkbox ref="closed-loop" v-bind:name="'Closed Loop'" v-on:toggle="updateControlMode('closed-loop', $event)"/>
-      <div class="keyboard">
-        <GimbalControls/>
-      </div>
+    <Checkbox ref="open-loop" v-bind:name="'Open Loop'" v-on:toggle="updateControlMode('open-loop', $event)"/>
+    <Checkbox ref="closed-loop" v-bind:name="'Closed Loop'" v-on:toggle="updateControlMode('closed-loop', $event)"/>
+    <div class="power">
+      <label style="float: left" for="'arm-power'">Arm Power Level</label>
+      <input class="increment-box" id='arm-power' type="text" v-model='arm_power' />
+      <button type="button" v-on:click="setPower()">Set Power</button>
+    </div>
+    <div class="keyboard">
+      <GimbalControls/>
     </div>
   </div>
 </template>
@@ -24,7 +28,9 @@ export default {
 
       stateInput: {
         state: "off"
-      }
+      },
+
+      arm_power: 0.5
     }
   },
 
@@ -159,6 +165,19 @@ export default {
       }
 
       this.$parent.publish('/arm_control_state', armStateMsg)
+    },
+
+    setPower: function() {
+      if (this.arm_power > 1 || this.arm_power < 0) {
+        return
+      }
+
+      const armPowerMsg = {
+        'type': 'ArmPower',
+        'power': parseFloat(this.arm_power)
+      }
+
+      this.$parent.publish('/arm_power', armPowerMsg)
     },
 
     forceOpenLoop: function () {
