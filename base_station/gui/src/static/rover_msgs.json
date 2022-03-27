@@ -57,6 +57,12 @@
             "joint_f"
         ]
     ],
+    "ArmPower": [
+        [
+            "double",
+            "power"
+        ]
+    ],
     "ArmPreset": [
         [
             "string",
