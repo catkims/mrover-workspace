@@ -235,6 +235,6 @@
 
   ul#vitals li {
     display: inline;
-    padding: 0px 10px 0px 0px;
+    padding: 0px 2px 0px 0px;
   }
 </style>

@@ -55,6 +55,9 @@
     <div class="box PDB light-bg">
       <PDBFuse/>
     </div>
+    <div class="box ik-gui light-bg">
+      <iframe src="http://localhost:8020/#/" height="300" width="100%" title="IK gui"></iframe>
+    </div>
   </div>
 </template>
 
@@ -310,7 +313,7 @@ export default {
         grid-template-columns: auto auto auto;
         grid-template-rows: 60px auto auto auto auto auto;
         grid-template-areas: "header header header" 
-                             "cameras cameras cameras" 
+                             "ik-gui cameras cameras" 
                              "carousel chlorophyll raman" 
                              "spectral chlorophyll scoopUV" 
                              "spectral chlorophyll drives"
@@ -457,6 +460,10 @@ export default {
 
     .PDBFuse {
       grid-area: PDBFuse;
+    }
+
+    .ik-gui {
+      grid-area: ik-gui;
     }
 
     ul#vitals li {
